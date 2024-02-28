@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Nombres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .panel {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>Buscador de Nombres</h1>
+        <form action="/buscar" method="post">
+            <label for="nombre">Ingrese un nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    {% if resultados %}
+        <div class="panel">
+            <h2>Resultados de la Búsqueda</h2>
+            <ul>
+                {% for nombre in resultados['Nombres'] %}
+                    <li>{{ nombre }}</li>
+                {% endfor %}
+            </ul>
+            <a href="/">Volver a Buscar</a>
+        </div>
+    {% endif %}
+</body>
+</html>
